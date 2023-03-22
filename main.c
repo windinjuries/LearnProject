@@ -1,6 +1,6 @@
 #include "inc/main.h"
-
+#include "inc/sub.h"
 int main() 
 {
-    printf("hello");
+    printf("%d",a);
 }
