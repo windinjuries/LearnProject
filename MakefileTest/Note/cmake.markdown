@@ -41,5 +41,20 @@ project(Tutorial VERSION 1.0)
 configure_file(TutorialConfig.h.in TutorialConfig.h)
 ```
 ### 相关配置项
-#### 
+#### add_executable()
+
+```cmake
+add_executable(<name> [WIN32] [MACOSX_BUNDLE]
+    [EXCLUDE_FROM_ALL]
+    [source1] [source2 ...]
+)
+```
+该命令用于定义一个可以构建成可执行程序的 Target。
+第一个参数是 Target 的名字，这个参数必须提供。
+第二个参数 WIN32 是可选参数，Windows 平台特定的参数，现在你不用管它的意思，不要使用它即可。后续我们需要使用到它的时候会说明其含义。
+第三个参数 MACOSX_BUNDLE 同第二个参数，是 Apple 平台的特定参数，先忽略。
+第四个参数 EXCLUDE_FROM_ALL 如果存在，那 CMake 默认构建的时候就不会构建这个 Target。
+后续可选参数均为构建该可执行文件所需的源码，在这里可以省略，通过其他命令单独指定源码。但是对于入门，我们直接在这里指定源码文件即可。
+#### add_library()
+#### add_custom_target() 
 
