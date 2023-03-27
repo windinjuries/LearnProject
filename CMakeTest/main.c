@@ -2,5 +2,6 @@
 #include "inc/sub.h"
 int main() 
 {
-    printf("%d",a);
+    int a = 12;
+    printf("%d\n",a);
 }
