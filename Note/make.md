@@ -1,7 +1,13 @@
 ## Makefile turtoial
 >Make 可自动决定一个大程序中哪些文件需要重新编译，并发布重新编译它们的命令。本版本GNU Make使用手册由Richard M. Stallman and Roland McGrath编著
-
-[GNU Make使用手册](https://blog.51cto.com/u_14592069/5712502)
+### 参考文献
+1. [GNU官网](https://gcc.gnu.org/)
+2. [GNU Make使用手册](https://blog.51cto.com/u_14592069/5712502)
+3. [GNU编译工具链](https://zhuanlan.zhihu.com/p/351841622)
+### 编译工具
+![编译流程](https://pic3.zhimg.com/80/v2-f92135d4a22a339cbe8984a2dc529ae6_720w.webp)
+#### gcc
+#### g++
 ### 基本语法
 #### 变量
 在makefile中有两种变量：
