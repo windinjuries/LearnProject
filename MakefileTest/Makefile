@@ -18,8 +18,8 @@ export STRIP OBJCOPY OBJDUMP
 # -O2 : “-On”优化等级
 # -g : 在可执行程序中包含标准调试信息
 # -I : 指定头文件路径（可多个）
-CFLAGS := -Wall -O2 -g 
-CFLAGS += -I $(shell pwd)/inc
+CFLAGS := -Wall -O2 -g -pthread
+CFLAGS += -I $(shell pwd)/inc 
 
 # LDFLAGS是告诉链接器从哪里寻找库文件，这在本Makefile是链接最后应用程序时的链接选项。
 LDFLAGS := 
