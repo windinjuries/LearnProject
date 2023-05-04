@@ -1,0 +1,59 @@
+# 伪目标
+PHONY := __build
+__build:
+
+# 清空需要的变量
+obj-y :=
+subdir-y :=
+EXTRA_CFLAGS :=
+
+# 包含同级目录Makefile
+# 相对路径为执行 Makefile.build 的路径
+include Makefile
+
+# 获取当前 Makefile 需要编译的子目录的目录名
+# filter过滤包含%/的文件，patsubst替换%/为%
+__subdir-y	:= $(patsubst %/,%,$(filter %/, $(obj-y)))
+subdir-y	+= $(__subdir-y)
+
+# 把子目录的目标定为以下注释
+# built-in.o d/built-in.o
+subdir_objs := $(foreach f,$(subdir-y),$(f)/built-in.o)
+
+# 获取当前目录需要编进程序的文件名作为，并写为目标
+# a.o b.o
+cur_objs := $(filter-out %/, $(obj-y))
+# 使修改头文件 .h 后，重新make后可以重新编译（重要）
+dep_files := $(foreach f,$(cur_objs),.$(f).d)
+# 列出存在的文件
+dep_files := $(wildcard $(dep_files))
+
+ifneq ($(dep_files),)
+  include $(dep_files)
+endif
+
+
+PHONY += $(subdir-y)
+
+# 第一个目标
+__build : $(subdir-y) built-in.o
+# 优先编译 子目录的内容
+#-C 选择子文件夹subdir-y执行
+$(subdir-y):
+	@echo "obj-y:"$(obj-y)
+	@echo "subdir-y:"$(subdir-y)
+	make -C $@ -f $(TOPDIR)/Makefile.build
+
+# 将文件和子目录文件链接成目标
+built-in.o : $(cur_objs) $(subdir_objs)
+	@echo "built-cur_objs:" $(cur_objs)
+	@echo "built-sub_dir:" $(subdir_objs)
+	$(LD) -r -o $@ $^
+
+dep_file = .$@.d
+# 生成 cur_objs 目标
+%.o : %.c
+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MD,$(dep_file) -c -o $@ $<
+	
+.PHONY : $(PHONY)
+	echo "test"

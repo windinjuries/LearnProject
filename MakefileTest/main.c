@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include "inc/main.h"
 #include "inc/sub.h"
 #include <pthread.h>
@@ -14,8 +15,7 @@ typedef struct
 st st1;
 void *thread1();
 void *thread2();
-
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[])
 {
     pthread_t pid1;
     pthread_t pid2;
@@ -26,19 +26,16 @@ int main(int argc, char *argv[], char *envp[])
     error = pthread_create(&pid1, NULL, &thread1, NULL);
     if (error < 0)
         return -1;
-    printf("%ld",pid1);
     error = pthread_create(&pid2, NULL, &thread1, NULL);
     if (error < 0)
         return -1;
-    printf("%ld",pid2);
-    while (1)
-    {
-        ;/* code */
-    } 
+    pthread_join(pid1,NULL);
+    pthread_join(pid2,NULL);
+
 }
 void *thread1()
 {
-    pthread_t tid = gettid();
+    pid_t tid = gettid();
     while (1)
     {
         pthread_mutex_trylock(&(st1.f_lock));
