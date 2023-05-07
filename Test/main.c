@@ -12,12 +12,9 @@ typedef int intb;
 typedef int intc;
 int main(int argc, char *argv[])
 {
-    int a = 10;
-    int *p = &a;
-    *p = 10;
-    while(1)
-    {
-        printf("%d\n", *p);
-        printf("%x\n", p);
-    }
+    //assert(argc == 2);
+    int a[2][3] = {{0, 1, 2}, {3, 4, 5}};
+    int(*p)[3] = a;
+    printf("%d\n", **p);
+    printf("%d\n", **(p + 1));
 }
