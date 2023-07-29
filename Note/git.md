@@ -47,10 +47,17 @@ git add . #添加当前目录的所有文件到暂存区
 git add[dir] #添加指定目录到暂存区，包括子目录
 git add [file1] #添加指定文件到暂存区
 ```
+## 删除文件
+
+```bash
+git rm [file] # 从暂存区和工作区删除文件
+git rm -cached [file] #从暂存区删除文件
+bash
 
 ## 提交暂存区文件到本地仓库
 
 ```bash
+git commit # 以打开默认编辑器提交
 git commit [file1] -m [message] #提交暂存区的指定文件到本地仓库
 git commit --amend -m [message] #使用一次新的commit，替代上一次提交
 ```
@@ -66,6 +73,24 @@ git status  #查看当前工作区暂存区变动
 ```bash
 git log  #查看提交历史
 ```
+## 管理git仓库中远程仓库
+
+```bash
+git remote #列出当前仓库中已配置的远程仓库。
+git remote -v #列出当前仓库中已配置的远程仓库，并显示它们的 URL。
+git remote add <remote_name> <remote_url> #指定一个远程仓库的名称和URL，将其添加到当前仓库中。
+git remote remove <remote_name> #从当前仓库中删除指定的远程仓库。
+git remote set-url <remote_name> <new_url> #修改指定远程仓库的URL。
+git remote show <remote_name> #显示指定远程仓库的详细信息，包括URL和跟踪分支。
+```
+
+## 推送
+
+```bash
+git push origin master #将本地分支的更新全部推送到远程仓库master分支
+git push origin -d  #删除远程branchname分支
+git push --tags #推送所有标签
+```
 
 ## 拉取
 
@@ -77,14 +102,6 @@ git fetch --all  #拉取所有远端的最新代码
 git fetch origin master #拉取远程最新master分支代码
 ```
 
-## 推送
-
-```bash
-git push origin master #将本地分支的更新全部推送到远程仓库master分支
-git push origin -d  删除远程branchname分支
-git push --tags 推送所有标签
-```
-
 ## 分支处理
 
 ```bash
@@ -94,11 +111,12 @@ git branch  #查看分支
 ```
 
 ```bash
-git checkout master #切换到分支master
+git branch [branchname] #新建分支branchname
+git checkout [branchname] #切换到分支branchname
 ```
 
 ```bash
-git merge master #合并当前分支到master
+git merge [branchname] #合并当前分支到barnchname
 ```
 
 ## 撤销和回退
