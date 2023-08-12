@@ -9,42 +9,41 @@
 #include <stdlib.h>
 typedef struct 
 {
-    int num;
-    pthread_mutex_t f_lock;
+  int num;
+  pthread_mutex_t f_lock;
 } st;
 st st1;
 void *thread1();
 void *thread2();
 int main(int argc, char *argv[])
 {
-    pthread_t pid1;
-    pthread_t pid2;
-    int error;
-    error = pthread_mutex_init(&st1.f_lock, NULL);
-    if (error < 0)
-        return -1;
-    error = pthread_create(&pid1, NULL, &thread1, NULL);
-    if (error < 0)
-        return -1;
-    error = pthread_create(&pid2, NULL, &thread1, NULL);
-    if (error < 0)
-        return -1;
-    pthread_join(pid1,NULL);
-    pthread_join(pid2,NULL);
+  pthread_t pid1;
+  pthread_t pid2;
+  int error;
+  error = pthread_mutex_init(&st1.f_lock, NULL);
+  if (error < 0)
+    return -1;
+  error = pthread_create(&pid1, NULL, &thread1, NULL);
+  if (error < 0)
+    return -1;
+  error = pthread_create(&pid2, NULL, &thread1, NULL);
+  if (error < 0)
+    return -1;
+  pthread_join(pid1,NULL);
+  pthread_join(pid2,NULL);
 
 }
 void *thread1()
 {
-    pid_t tid = gettid();
-    while (1)
-    {
-        pthread_mutex_trylock(&(st1.f_lock));
-        if (st1.num > 100)
-            st1.num = 0;
-        else
-            st1.num++;
-        printf("%d: i=%d\n", tid, st1.num);
-        pthread_mutex_unlock(&(st1.f_lock));
-        sleep(2); 
-    }
+  pid_t tid = gettid();
+  while (1)
+  {
+    pthread_mutex_trylock(&(st1.f_lock));
+    if (st1.num > 100)
+      st1.num = 0;
+    else
+      st1.num++;
+    printf("%d: i=%d\n", tid, st1.num);
+    pthread_mutex_unlock(&(st1.f_lock));
+  }
 }
