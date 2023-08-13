@@ -48,7 +48,7 @@
 ## visual mode
 - `v`: character visual mode
 - `V`: line visual mode
- - `>,<` increase indent, decrease indent
+    - `>,<` increase indent, decrease indent
 - `C-v` : block visual mode
 
 ## motion
