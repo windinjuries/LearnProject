@@ -9,7 +9,7 @@
 #include <stdlib.h>
 typedef struct 
 {
-  int num;
+  int https://www.bilibili.com/video/BV1jg4y1t7NY/?spm_id_from=333.999.0.0um;
   pthread_mutex_t f_lock;
 } st;
 st st1;
@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
 }
 void *thread1()
 {
-  pid_t tid = gettid();
   while (1)
   {
     pthread_mutex_trylock(&(st1.f_lock));
