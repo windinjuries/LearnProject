@@ -18,7 +18,7 @@
 - `u` : undo
 - `<C-r>` : redo
 ## move cursor
-### cahracter move
+### character move
 - `hjkl` : left,down,up,right
 - `0` ： move to the start character of this line  
 - `$` ： move to the end character of this line
@@ -47,10 +47,10 @@
 - `i{char}` (inner)innot include char--
 - `a{char}` (around)include char
 
-## <operator><motion><char>
-operator : `y`,`d`,`c`,`v`...  
-motion : `i`,`v`--
-char : `w`(word),`"`,`'`,`{`,`[`....  
+## `<operator><motion><char>`
+`<operator>` : `y`,`d`,`c`,`v`...  
+`<motion>` : `i`,`v`--
+`<char>` : `w`(word),`"`,`'`,`{`,`[`....  
 ### example
 - `ciw` : (change innner word) delete the word and insert
 
