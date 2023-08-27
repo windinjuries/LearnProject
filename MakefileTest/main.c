@@ -13,8 +13,10 @@ typedef struct
   pthread_mutex_t f_lock;
 } st;
 st st1;
+
 void *thread1();
 void *thread2();
+
 int main(int argc, char *argv[])
 {
   pthread_t pid1;

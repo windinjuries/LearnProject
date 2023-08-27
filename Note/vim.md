@@ -4,7 +4,7 @@
 ## cut
 - `x` ：cut
 ## change
-- c : change
+- `c` : change
 ## copy
  yank = copy
 -  `yy` ：copy this line
@@ -58,11 +58,16 @@
 ## `<operator><motion><char>`
 - `<operator>` : `y`,`d`,`c`,`v`...
 - `<motion>` : `i`,`a`
-- `<char>` : `w`(word),`"`,`'`,`{`,`[`...
+- `<char>` : `"`,`'`,`{`,`[`,`<`,`w`(word),`t`(tag),`s`(sentence),`p`(paragraph)...
 ### example
 - `ciw` : (change inner word) delete the word and insert
 
 ## function define
 - `<C-]>` jump to function defination
 - `<C-o>` return last position
+
+## folding
+- `zf` : create fold,use method like `<operator><motion><char>`
+- `zo` : open fold
+- `zc` : close fold
 
