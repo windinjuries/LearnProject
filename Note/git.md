@@ -34,31 +34,30 @@ git init #新建仓库
 git clone https://www.github.git
 ```
 
-## 新建分支dev
+## 新建分支
 
 ```bash
 git checkout -b dev #创建开发分支dev，并切换到该分支
 ```
 
-## 保存文件到暂存区stage
-
+## 保存文件到暂存区
 ```bash
 git add . #添加当前目录的所有文件到暂存区
-git add[dir] #添加指定目录到暂存区，包括子目录
-git add [file1] #添加指定文件到暂存区
+git add [path] #添加指定目录到暂存区，包括子目录
+git add [file] #添加指定文件到暂存区
 ```
 ## 删除文件
 
 ```bash
 git rm [file] # 从暂存区和工作区删除文件
 git rm -cached [file] #从暂存区删除文件
-bash
+```
 
 ## 提交暂存区文件到本地仓库
 
 ```bash
 git commit # 以打开默认编辑器提交
-git commit [file1] -m [message] #提交暂存区的指定文件到本地仓库
+git commit [file] -m [message] #提交暂存区的指定文件到本地仓库
 git commit --amend -m [message] #使用一次新的commit，替代上一次提交
 ```
 
@@ -73,15 +72,15 @@ git status  #查看当前工作区暂存区变动
 ```bash
 git log  #查看提交历史
 ```
-## 管理git仓库中远程仓库
+## 管理远程仓库
 
 ```bash
 git remote #列出当前仓库中已配置的远程仓库。
 git remote -v #列出当前仓库中已配置的远程仓库，并显示它们的 URL。
-git remote add <remote_name> <remote_url> #指定一个远程仓库的名称和URL，将其添加到当前仓库中。
-git remote remove <remote_name> #从当前仓库中删除指定的远程仓库。
-git remote set-url <remote_name> <new_url> #修改指定远程仓库的URL。
-git remote show <remote_name> #显示指定远程仓库的详细信息，包括URL和跟踪分支。
+git remote add [remote_name] [remote_url] #指定一个远程仓库的名称和URL，将其添加到当前仓库中。
+git remote remove [remote_name] #从当前仓库中删除指定的远程仓库。
+git remote set-url [remote_name] [new_url] #修改指定远程仓库的URL。
+git remote show [remote_name] #显示指定远程仓库的详细信息，包括URL和跟踪分支。
 ```
 
 ## 推送
@@ -119,22 +118,26 @@ git checkout [branchname] #切换到分支branchname
 git merge [branchname] #合并当前分支到barnchname
 ```
 
-## 撤销和回退
+## 撤销
 
 ```bash
-#用于没添加到暂存区的工作区文件
-git checkout [file]  #丢弃某个文件file
-git checkout .  #丢弃所有文件
+# 将添加到暂存区的文件版本恢复到工作区文件
+# 注意：未被添加到暂存区的文件无法恢复
+git checkout -- [file]  #丢弃某个文件file
+git checkout -- .  #丢弃所有文件
 ```
 
 ```bash
-#作用是修改HEAD的位置，即将HEAD指向的位置改变为之前存在的某个版本
-git reset HEAD --file #回退暂存区里的某个文件，回退到当前版本工作区状态
-git reset –-soft 目标版本号 #可以把版本库上的提交回退到暂存区,修改记录保留
-git reset –-mixed 目标版本号 #可以把版本库上的提交回退到工作区，修改记录保留
-git reset –-hard  #可以把版本库上的提交彻底回退，修改的记录全部revert。
-# 1.是暂存区文件恢复到源文件
-# 2.是本地仓库文件恢复到各个区
+# reset分为以下三步：
+# 1. 将HEAD和master分支指针移动到对应的commit上
+# 2. 将commit中的文件版本覆盖到stage
+# 3. 将stage覆盖到workspace
+# 注意：
+# 1. reset是用于移动master分支指针，checkout是移动HEAD
+# 2. hard方式使用很危险
+git reset –-soft [commit] 
+git reset –-mixed [commit]
+git reset –-hard [commit]
 ```
 
 ```bash
