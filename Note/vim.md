@@ -71,3 +71,12 @@
 - `zo` : open fold
 - `zc` : close fold
 
+## record
+- `q{char}` : 'q'+'char' start record
+- `q` : stop record
+- `@{char}` : do record something
+
+## mark
+- m{char} : make a mark
+- ``{char}` jump to the postion marked
+- `'{char}` : jump to the start of the line marked
