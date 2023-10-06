@@ -78,5 +78,5 @@
 
 ## mark
 - m{char} : make a mark
-- ```text`{char}``` : jump to the postion marked
+- ``` `{char}``` : jump to the postion marked
 - `'{char}` : jump to the start of the line marked
