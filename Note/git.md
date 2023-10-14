@@ -24,20 +24,14 @@
 
 ## 创建本地git仓库
 
-```bash
-git init #新建仓库
+```git
+git init 
 ```
 
 ## 克隆远程仓库
 
 ```bash
 git clone https://www.github.git
-```
-
-## 新建分支
-
-```bash
-git checkout -b dev #创建开发分支dev，并切换到该分支
 ```
 
 ## 保存文件到暂存区
@@ -56,75 +50,105 @@ git rm -cached [file] #从暂存区删除文件
 ## 提交暂存区文件到本地仓库
 
 ```bash
-git commit # 以打开默认编辑器提交
-git commit [file] -m [message] #提交暂存区的指定文件到本地仓库
-git commit --amend -m [message] #使用一次新的commit，替代上一次提交
+# 以打开默认编辑器提交
+git commit 
+#提交暂存区的指定文件到本地仓库
+git commit [file] -m [message] 
+#使用一次新的commit，替代上一次提交
+git commit --amend -m [message] 
 ```
 
 ## 查看状态
 
 ```bash
-git status  #查看当前工作区暂存区变动
+#查看当前工作区暂存区变动
+git status  
 ```
 
 ## 查看日志
 
 ```bash
-git log  #查看提交历史
+#查看提交历史
+git log  
 ```
 ## 管理远程仓库
 
 ```bash
-git remote #列出当前仓库中已配置的远程仓库。
-git remote -v #列出当前仓库中已配置的远程仓库，并显示它们的 URL。
-git remote add [remote_name] [remote_url] #指定一个远程仓库的名称和URL，将其添加到当前仓库中。
-git remote remove [remote_name] #从当前仓库中删除指定的远程仓库。
-git remote set-url [remote_name] [new_url] #修改指定远程仓库的URL。
-git remote show [remote_name] #显示指定远程仓库的详细信息，包括URL和跟踪分支。
+#列出当前仓库中已配置的远程仓库。
+git remote 
+#列出当前仓库中已配置的远程仓库，并显示它们的 URL。
+git remote -v 
+#指定一个远程仓库的名称和URL，将其添加到当前仓库中。
+git remote add [remote_name] [remote_url] 
+#从当前仓库中删除指定的远程仓库。
+git remote remove [remote_name] 
+#修改指定远程仓库的URL
+git remote set-url [remote_name] [new_url] 
+#显示指定远程仓库的详细信息，包括URL和跟踪分支
+git remote show [remote_name] 
 ```
 
 ## 推送
 
 ```bash
-git push origin master #将本地分支的更新全部推送到远程仓库master分支
-git push origin -d  #删除远程branchname分支
-git push --tags #推送所有标签
+#将本地分支master更新全部推送到远程仓库origin的main分支
+#自动创建远程分支
+git push origin master:main 
+#删除远程branch_name分支
+git push origin -d [branch_name] 
+#推送所有标签
+git push --tags 
 ```
 
 ## 拉取
 
 ```bash
-git pull  #拉取远程仓库所有分支更新并合并到本地分支
-git pull origin master #将远程master分支合并到当前本地分支
-git pull origin master:master #将远程master分支合并到当前本地master分支，冒号后面表示本地分支
-git fetch --all  #拉取所有远端的最新代码
-git fetch origin master #拉取远程最新master分支代码
+#拉取远程仓库所有分支更新并合并到本地分支
+git pull  
+#将远程master分支合并到当前本地分支
+git pull origin master 
+#将远程master分支合并到当前本地master分支，冒号后面表示本地分支
+git pull origin master:master 
+#拉取所有远端的最新代码
+git fetch --all  
+#拉取远程最新master分支代码
+git fetch origin master 
 ```
 
-## 分支处理
-
+## 分支管理
 ```bash
-git branch  #查看分支
-—D #删除
--a #本地和远程分支
+#新建分支
+git branch [branch_name] 
 ```
-
 ```bash
-git branch [branchname] #新建分支branchname
-git checkout [branchname] #切换到分支branchname
+#切换分支
+git checkout [branch_name] 
 ```
-
 ```bash
-git merge [branchname] #合并当前分支到barnchname
+#查看分支
+git branch 
+#查看远程分支
+git branch -a 
+```
+```bash
+#删除分支
+git branch -D [branch_name] 
+```
+```bash
+#合并当前分支到branch_name
+git merge [branchname] 
 ```
 
 ## 撤销
 
 ```bash
-# 将添加到暂存区的文件版本恢复到工作区文件
+# 将添加到暂存区的文件版本恢复到工作区文件上
 # 注意：未被添加到暂存区的文件无法恢复
-git checkout -- [file]  #丢弃某个文件file
-git checkout -- .  #丢弃所有文件
+
+#丢弃某个文件file
+git checkout -- [file]  
+#丢弃所有文件
+git checkout -- .  
 ```
 
 ```bash
@@ -142,8 +166,9 @@ git reset –-hard [commit]
 
 ```bash
 #用于没添加到暂存区的工作区文件
-git revert 版本号  #回滚某个版本作为新版本
+#回滚某个版本作为新版本
+git revert 版本号  
 ```
-
+注意：命令的详细介绍可通过如`man git`查看详情
 > 参考文献
 > https://blog.csdn.net/weixin_36168780/article/details/112100325
