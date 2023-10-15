@@ -2,7 +2,7 @@
 
 # git运行机制
 
-* <img src="https://res.cloudinary.com/fengerzh/image/upload/git-reset_drbfhd.png" alt="neovim" style="zoom: 80%;" />
+* <img src="https://res.cloudinary.com/fengerzh/image/upload/git-reset_drbfhd.png" alt="neovim" style="zoom: 30%;" />
 
 上图描述了 git 对象的在不同的生命周期中不同的存储位置，通过不同的 git 命令改变 git 对象的存储生命周期。
 
@@ -36,15 +36,20 @@ git clone https://www.github.git
 
 ## 保存文件到暂存区
 ```bash
-git add . #添加当前目录的所有文件到暂存区
-git add [path] #添加指定目录到暂存区，包括子目录
-git add [file] #添加指定文件到暂存区
+#添加当前目录的所有文件到暂存区
+git add . 
+#添加指定目录到暂存区，包括子目录
+git add [path] 
+#添加指定文件到暂存区
+git add [file] 
 ```
 ## 删除文件
 
 ```bash
-git rm [file] # 从暂存区和工作区删除文件
-git rm -cached [file] #从暂存区删除文件
+# 从暂存区和工作区删除文件
+git rm [file] 
+#从暂存区删除文件
+git rm -cached [file] 
 ```
 
 ## 提交暂存区文件到本地仓库
