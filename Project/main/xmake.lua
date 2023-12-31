@@ -1,0 +1,6 @@
+add_defines("main")
+add_includedirs("../log/src/")
+target("main")
+    set_kind("static")
+    add_deps("log")
+    add_files("*.c")
