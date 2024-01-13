@@ -3,3 +3,5 @@
 *.o.d
 #执行文件
 test
+*/build/*
+*/.xmake/*

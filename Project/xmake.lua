@@ -6,7 +6,7 @@ set_version("1.0.0", {build = "%Y%m%d%H%M"})
 -- set common flags
 set_warnings("all", "error")
 set_languages("c99")
-add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing", "-Wno-error=expansion-to-defined")
+add_cxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing", "-Wno-error=expansion-to-defined", "-DLOG_USE_COLOR", "-lrt")
 add_mxflags("-Wno-error=deprecated-declarations", "-fno-strict-aliasing", "-Wno-error=expansion-to-defined")
 
 -- add build modes
@@ -18,7 +18,6 @@ includes("log")
 target("app")
     set_kind("binary")
     add_includedirs("./log/src/")
+    add_deps("log")
     add_files("./main/main.c")
-    add_deps("log")
-    add_deps("log")
    
