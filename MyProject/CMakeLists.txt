@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 project(HelloWorld)
- 
+set(PROJECT_DIR ./)
 set(CMAKE_C_STANDARD 99)
  
 include_directories(log/src)

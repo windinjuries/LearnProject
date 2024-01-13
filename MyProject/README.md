@@ -1,7 +1,18 @@
 ## My Personal Project
-## build tool
-- xmake + aarch64-linux-gcc
+### build tool
+- cmake
+- make 
+- aarch64-linux-gcc
 
+### build step
+1. make
+```bash
+cmake -S . -B ./build/
+```
+2. compile
+```
+make
+```
 ### log 
-- [log.c](www.github.com/rxi/log.c.git)
+- [log.c](https://www.github.com/rxi/log.c)
 
