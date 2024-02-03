@@ -1,12 +1,12 @@
 #include "log.h"
 #include <stdio.h>
-static char * TAG = "MAIN";
+#include <stdint.h>
 int main(int argc, char *argv[])
 { 
-    __int32_t i = 12;
+    int32_t i = 12;
     if(-1 < i)
     {
-        log_warn("y");
+        log_warn("y %d", 1); 
     }
     else
     {
