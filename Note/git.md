@@ -22,19 +22,19 @@
 
 # 指令详解
 
-## 创建本地git仓库
+## init
 
 ```git
 git init 
 ```
 
-## 克隆远程仓库
+## clone
 
 ```bash
 git clone https://www.github.git
 ```
 
-## 保存文件到暂存区
+## add
 ```bash
 #添加当前目录的所有文件到暂存区
 git add . 
@@ -43,7 +43,7 @@ git add [path]
 #添加指定文件到暂存区
 git add [file] 
 ```
-## 删除文件
+## rm
 
 ```bash
 # 从暂存区和工作区删除文件
@@ -51,8 +51,7 @@ git rm [file]
 #从暂存区删除文件
 git rm -cached [file] 
 ```
-
-## 提交暂存区文件到本地仓库
+# commit
 
 ```bash
 # 以打开默认编辑器提交
@@ -63,20 +62,20 @@ git commit [file] -m [message]
 git commit --amend -m [message] 
 ```
 
-## 查看状态
+## status
 
 ```bash
 #查看当前工作区暂存区变动
 git status  
 ```
 
-## 查看日志
+## log
 
 ```bash
 #查看提交历史
 git log  
 ```
-## 管理远程仓库
+## remote
 
 ```bash
 #列出当前仓库中已配置的远程仓库。
@@ -93,7 +92,7 @@ git remote set-url [remote_name] [new_url]
 git remote show [remote_name] 
 ```
 
-## 推送
+## push
 
 ```bash
 #将本地分支master更新全部推送到远程仓库origin的main分支
@@ -105,7 +104,7 @@ git push origin -d [branch_name]
 git push --tags 
 ```
 
-## 拉取
+## pull && fetch
 
 ```bash
 #拉取远程仓库所有分支更新并合并到本地分支
@@ -120,7 +119,7 @@ git fetch --all
 git fetch origin master 
 ```
 
-## 分支管理
+## branch
 ```bash
 #新建分支
 git branch [branch_name] 
@@ -144,7 +143,7 @@ git branch -D [branch_name]
 git merge [branchname] 
 ```
 
-## 撤销
+## reset
 
 ```bash
 # 将添加到暂存区的文件版本恢复到工作区文件上
@@ -168,13 +167,46 @@ git reset –-soft [commit]
 git reset –-mixed [commit]
 git reset –-hard [commit]
 ```
-
+## revert
 ```bash
 #用于没添加到暂存区的工作区文件
 #回滚某个版本作为新版本
 git revert 版本号  
 ```
+
+## stash
+
+```bash
+# 保存进度
+git stash
+# 查看保存的进度
+git stash list
+# 恢复进度
+git stash pop 
+## 删除进度
+git stash drop
+```
+
+## diff
+
+```bash
+# 查看工作区和暂存区的区别(以摘要形式)
+git diff --stat [file/path]
+
+# 查看工作区和commit的区别
+git diff commit
+
+# 查看工作区和HEAD的区别
+git diff HEAD
+
+# 查看暂存区和commit的区别
+git diff --cached commit
+
+# 查看commit1和commit2的区别
+git diff --commit1 commit2
+```
+
 注意：命令的详细介绍可通过如`man git`查看详情
-> 参考文献
+## reference
 [git book](https://git-scm.com/book/zh/)
 [git command](https://blog.csdn.net/weixin_36168780/article/details/112100325)
