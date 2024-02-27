@@ -176,4 +176,5 @@ git revert 版本号
 ```
 注意：命令的详细介绍可通过如`man git`查看详情
 > 参考文献
-> https://blog.csdn.net/weixin_36168780/article/details/112100325
+[git book](https://git-scm.com/book/zh/)
+[git command](https://blog.csdn.net/weixin_36168780/article/details/112100325)

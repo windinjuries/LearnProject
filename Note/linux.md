@@ -1,24 +1,34 @@
 # Linux
-## 终端工具
+## linux command
 ### grep
-grep是指global search regular expression and print out the line：用于全面搜索的正则表达式 
-语法格式
-
+global search regular expression in a file
 ```bash
-#option：选项 
-#Pattern：搜索的正则表达式
-#File：搜索文件
 grep [OPTION...] PATTERNS [FILE...]
-grep [OPTION...] -e PATTERNS ... [FILE...]
-grep [OPTION...] -f PATTERN_FILE ... [FILE...]
 # example
 grep main main.c
 ```
-### 管道命令 |
-Linux管道命令是“ | ”，其作用是用来连接多条指令，前一条指令的输出流会作为后一条指令的操作对象，其命令格式为“指令1 | 指令2 | …”，该命令的后一条指令，必须能够接收标准输入流命令才能执行。
-### 重定向 >
-Linux 用于将指令的输出结果重定向到文件中
+### pipe
+inter-process communication mechanisms in the Linux environment
+```bash
+ls -l | grep main.c
+```
+### redirect
+a way of resending the input or output of a command from a terminal or file to another terminal or file in Linux
+```bash
+ls -l > 1.txt
+```
 
+### htop
+display information about all processes
+
+### ps
+display information about the active processes
+
+### kill
+terminate or reload errant processes with different signals
+```bash
+kill -9 PID
+```
 ### nm
 
 ### xxd
@@ -29,13 +39,12 @@ Linux 用于将指令的输出结果重定向到文件中
 
 ### binutils
 
-## modern unix 终端工具
+## modern unix command
 
 ### exa
-用于代替ls命令
 
 ### batcat
-用于代替cat命令
+
 ### neofetch
 
 ### lazygit
