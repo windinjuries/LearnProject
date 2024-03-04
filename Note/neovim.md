@@ -1,13 +1,15 @@
 ---
 title: neovim tutorial
-date: 2022-12-23 12:18:18
+date: 2023-8-23 12:18:18
 tags: 
 - neovim
-
+categories: 
+- [Tutorial, Program Tool]
+comment: true
+cover: "https://picx.zhimg.com/v2-300e97a93f78e336e63861b9b6df9910_r.jpg?source=172ae18b1b9b6df9910_r.jpg"
+excerpt: "Neovim在GitHub上自述为*Vim-fork focused on extensibility and usability*，所以自Neovim诞生以来，它就专注于提高自己的扩展性与易用性，例如内置终端、异步执行这两个比较重要的功能都是Neovim率先支持，而Vim追赶在后的。经过多年在各自赛道上的发展，Neovim与Vim已经产生了不少差异。不过现阶段来看，**Neovim的特性仍然几乎是Vim的超集**，也就是说除了自己独有的功能外，Neovim还支持Vim的绝大部分功能。"
 ---
-> Neovim在GitHub上自述为*Vim-fork focused on extensibility and usability*，所以自Neovim诞生以来，它就专注于提高自己的扩展性与易用性，例如内置终端、异步执行这两个比较重要的功能都是Neovim率先支持，而Vim追赶在后的。经过多年在各自赛道上的发展，Neovim与Vim已经产生了不少差异。不过现阶段来看，**Neovim的特性仍然几乎是Vim的超集**，也就是说除了自己独有的功能外，Neovim还支持Vim的绝大部分功能。
-
-<img src="https://picx.zhimg.com/v2-300e97a93f78e336e63861b9b6df9910_r.jpg?source=172ae18b1b9b6df9910_r.jpg" alt="neovim" style="zoom: 50%;" />
+<!-- <img src="https://picx.zhimg.com/v2-300e97a93f78e336e63861b9b6df9910_r.jpg?source=172ae18b1b9b6df9910_r.jpg" alt="neovim" style="zoom: 50%;" /> -->
 
 # neovim
 

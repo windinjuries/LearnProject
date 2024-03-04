@@ -1,7 +1,13 @@
+---
+title: cmake tutorial
+date: 2024-2-25 12:00:00
+tags: cmake
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件"
+comment: true
+---
 ## cmake turtoial
-> CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件
-
-参考链接 [Modern Cmake](https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/chapters/intro/newcmake.html)
 ### 环境配置
 1. 运行环境：Linux
 2. 编译工具：gcc/g++
@@ -141,3 +147,6 @@ set(optVar initialValue CACHE BOOL helpString)
 不过上述两个命令定义缓存变量是有一点点区别的，option() 命令没有 FORCE 关键字。
 #### 变量作用域
 
+
+## 参考 
+[Modern Cmake](https://modern-cmake-cn.github.io/Modern-CMake-zh_CN/chapters/intro/newcmake.html)

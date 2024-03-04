@@ -1,5 +1,13 @@
-# GDB
-
+---
+title: gdb tutorial
+date: 2023-01-01 09:21:23
+tags:
+- gdb
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed."
+comment: true
+---
 ## command 
 | **Command Name** | **Command Abbreviation** | **Command Description** |
 |------------|--------------|------------|

@@ -1,4 +1,13 @@
-# FreeRTOS
+---
+title: freertos tutorial
+date: 2024-2-24 12:00:00
+tags: freertos
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "freertos is a open embedding system"
+comment: true
+---
+
 > FreeRTOS 是一个可裁剪的小型且免费的 RTOS 系统，尺寸非常小，可运行于微控制器上。其特点包括：
 - 内核支持抢占式，合作式和时间片调度。
 - 提供了一个用于低功耗的 Tickless 模式。

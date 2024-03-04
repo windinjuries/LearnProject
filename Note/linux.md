@@ -1,4 +1,12 @@
-# Linux
+---
+title: linux tutorial
+date: 2024-1-15 12:00:00
+tags: linux
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "linux is a open system"
+comment: true
+---
 ## linux command
 ### grep
 global search regular expression in a file

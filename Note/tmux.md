@@ -1,5 +1,13 @@
-# TMUX
-
+---
+title: tmux tutorial
+date: 2023-10-23 12:18:18
+tags: 
+- tmux
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "tmux is a terminal multiplexer: it enables a number of terminals to be created, accessed, and controlled from a single screen."
+comment: true
+---
 ## introduce
 1. server: back server, server usually has one 
 2. session: Sessions are the top-level structure in tmux, representing a collection of related terminal windows

@@ -1,8 +1,17 @@
-> Git（读音为/gɪt/）是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。
+---
+title: git tutorial
+date: 2023-03-05 09:21:23
+tags:
+- git
+categories: 
+- [Tutorial, Program Tool]
+excerpt: "Git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。也是Linus Torvalds为了帮助管理Linux内核开发而开发的一个开放源码的版本控制软件。"
+comment: true
+---
 
-# git运行机制
+## Git Principle
 
-* <img src="https://res.cloudinary.com/fengerzh/image/upload/git-reset_drbfhd.png" alt="neovim" style="zoom: 30%;" />
+* <img src="https://res.cloudinary.com/fengerzh/image/upload/git-reset_drbfhd.png" alt="git" style="zoom: 25%;" />
 
 上图描述了 git 对象的在不同的生命周期中不同的存储位置，通过不同的 git 命令改变 git 对象的存储生命周期。
 
@@ -11,7 +20,7 @@
 3. Repository：仓库区（或本地仓库），就是安全存放数据的位置，这里面有你提交到所有版本的数据。其中HEAD指向最新放入仓库的版本
 4. Remote：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换
 
-# 文件状态
+## File Status
 
 版本控制就是对文件的版本控制，要对文件进行修改、提交等操作
 
@@ -20,21 +29,19 @@
 - Modified: 文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态, 使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改 !
 - Staged: 暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态. 执行git reset HEAD filename取消暂存, 文件状态为Modified
 
-# 指令详解
+## Command Introduce 
 
-## init
-
-```git
+### init
+```bash
 git init 
 ```
 
-## clone
-
+### clone
 ```bash
 git clone https://www.github.git
 ```
 
-## add
+### add
 ```bash
 #添加当前目录的所有文件到暂存区
 git add . 
@@ -43,7 +50,7 @@ git add [path]
 #添加指定文件到暂存区
 git add [file] 
 ```
-## rm
+### rm
 
 ```bash
 # 从暂存区和工作区删除文件
@@ -51,7 +58,7 @@ git rm [file]
 #从暂存区删除文件
 git rm -cached [file] 
 ```
-# commit
+### commit
 
 ```bash
 # 以打开默认编辑器提交
@@ -62,20 +69,20 @@ git commit [file] -m [message]
 git commit --amend -m [message] 
 ```
 
-## status
+### status
 
 ```bash
 #查看当前工作区暂存区变动
 git status  
 ```
 
-## log
+### log
 
 ```bash
 #查看提交历史
-git log  
+git log --oneline 
 ```
-## remote
+### remote
 
 ```bash
 #列出当前仓库中已配置的远程仓库。
@@ -92,7 +99,7 @@ git remote set-url [remote_name] [new_url]
 git remote show [remote_name] 
 ```
 
-## push
+### push
 
 ```bash
 #将本地分支master更新全部推送到远程仓库origin的main分支
@@ -104,7 +111,7 @@ git push origin -d [branch_name]
 git push --tags 
 ```
 
-## pull && fetch
+### pull && fetch
 
 ```bash
 #拉取远程仓库所有分支更新并合并到本地分支
@@ -119,7 +126,7 @@ git fetch --all
 git fetch origin master 
 ```
 
-## branch
+### branch
 ```bash
 #新建分支
 git branch [branch_name] 
@@ -138,12 +145,14 @@ git branch -a
 #删除分支
 git branch -D [branch_name] 
 ```
+
+### merge
 ```bash
 #合并当前分支到branch_name
 git merge [branchname] 
 ```
 
-## reset
+### checkout
 
 ```bash
 # 将添加到暂存区的文件版本恢复到工作区文件上
@@ -155,6 +164,7 @@ git checkout -- [file]
 git checkout -- .  
 ```
 
+### reset
 ```bash
 # reset分为以下三步：
 # 1. 将HEAD和master分支指针移动到对应的commit上
@@ -167,14 +177,15 @@ git reset –-soft [commit]
 git reset –-mixed [commit]
 git reset –-hard [commit]
 ```
-## revert
+
+### revert
 ```bash
 #用于没添加到暂存区的工作区文件
 #回滚某个版本作为新版本
 git revert 版本号  
 ```
 
-## stash
+### stash
 
 ```bash
 # 保存进度
@@ -187,7 +198,7 @@ git stash pop
 git stash drop
 ```
 
-## diff
+### diff
 
 ```bash
 # 查看工作区和暂存区的区别(以摘要形式)
@@ -203,10 +214,10 @@ git diff HEAD
 git diff --cached commit
 
 # 查看commit1和commit2的区别
-git diff --commit1 commit2
+git diff commit1 commit2
 ```
 
-注意：命令的详细介绍可通过如`man git`查看详情
-## reference
-[git book](https://git-scm.com/book/zh/)
-[git command](https://blog.csdn.net/weixin_36168780/article/details/112100325)
+注意：命令的详细介绍在Linux环境下可如 `man git` 或者 `git --help` 查看
+## Reference
+[git book](https://git-scm.com/book/zh/)  
+[git command introduce](https://blog.csdn.net/weixin_36168780/article/details/112100325)

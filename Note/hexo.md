@@ -1,16 +1,15 @@
 ---
 title: hexo tutorial
-date: 2023-01-01 09:21:23
+date: 2023-05-01 09:21:23
 tags:
 - hexo
 - github
+- vercel
+categories: 
+- [Tutorial, Front]
 comment: true
+excerpt: "`Hexo`是高效的静态网站生成框架，它基于`Node.js`，快速，简单且功能强大，是搭建博客的首选框架。通过`Hexo`，你可以直接使用`Markdown`语法来撰写博客。"
 ---
-
-> `Hexo + GitHub`可以组成免费的个人博客网站，`Hexo`是高效的静态网站生成框架，它基于`Node.js`，快速，简单且功能强大，是搭建博客的首选框架。大家可以进入Hexo官网进行详细查看，因为`Hexo`的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。通过`Hexo`，你可以直接使用`Markdown`语法来撰写博客。写完后只需两三条命令即可将生成的网页上传到`github`或者`coding`等代码管理托管平台。
-
-# hexo搭建教程
-
 ## 环境安装
 
 - Node.js
