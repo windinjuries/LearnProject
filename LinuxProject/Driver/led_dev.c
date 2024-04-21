@@ -5,6 +5,17 @@
 #include <linux/uaccess.h>
 #include <linux/io.h>
 
+
+#define GPIO_BASE   0x0300B000
+#define PC_CFG0     2*0x0024+0x00
+#define PC_CFG1     2*0x0024+0x04
+#define PC_CFG2     2*0x0024+0x08
+#define PC_CFG3     2*0x0024+0x0C
+
+#define PC_DAT     2*0x0024+0x10
+#define PC_DRV0    2*0x0024+0x14
+#define PC_DRV1    2*0x0024+0x18
+
 #define DEV_NAME "led_chrdev"
 #define DEV_CNT (3)
 
@@ -13,57 +24,46 @@ struct class *led_chrdev_class;
 
 struct led_chrdev {
     struct cdev dev;
-    unsigned int __iomem *va_dr;
-    unsigned int __iomem *va_gdir;
-    unsigned int __iomem *va_iomuxc_mux;
-    unsigned int __iomem *va_ccm_ccgrx;
-    unsigned int __iomem *va_iomux_pad;
-
-    unsigned long pa_dr;
-    unsigned long pa_gdir;
-    unsigned long pa_iomuxc_mux;
-    unsigned long pa_ccm_ccgrx;
-    unsigned long pa_iomux_pad;
+    unsigned int __iomem *pc_cfg;  // port controller config register
+    unsigned int __iomem *pc_dat;
+    unsigned int __iomem *pc_pull;
 
     unsigned int led_pin;
-    unsigned int clock_offset;
 };
 
 static int led_chrdev_open(struct inode *inode, struct file *filp)
 {
 
     unsigned int val = 0;
-    struct led_chrdev *led_cdev =
-        (struct led_chrdev *)container_of(inode->i_cdev, struct led_chrdev,
-                                          dev);
-    filp->private_data =
-        container_of(inode->i_cdev, struct led_chrdev, dev);
-
+    struct led_chrdev *led_cdev = (struct led_chrdev *)container_of(inode->i_cdev, struct led_chrdev, dev);
+    filp->private_data = container_of(inode->i_cdev, struct led_chrdev, dev);
     printk("open\n");
+    val |= (0x43); // 开启a、b、g的时钟
+    writel(val, va_clkaddr);
 
-    led_cdev->va_dr = ioremap(led_cdev->pa_dr, 4);                  /*  */
-    led_cdev->va_gdir = ioremap(led_cdev->pa_gdir, 4);
-    led_cdev->va_iomuxc_mux = ioremap(led_cdev->pa_iomuxc_mux, 4);
-    led_cdev->va_ccm_ccgrx = ioremap(led_cdev->pa_ccm_ccgrx, 4);
-    led_cdev->va_iomux_pad = ioremap(led_cdev->pa_iomux_pad, 4);
-
-    val = ioread32(led_cdev->va_ccm_ccgrx);
-    val &= ~(3 << led_cdev->clock_offset);
-    val |= (3 << led_cdev->clock_offset);
-
-    iowrite32(val, led_cdev->va_ccm_ccgrx);
-    iowrite32(5, led_cdev->va_iomuxc_mux);
-    iowrite32(0x1F838, led_cdev->va_iomux_pad);
-
-    val = ioread32(led_cdev->va_gdir);
-    val &= ~(1 << led_cdev->led_pin);
-    val |= (1 << led_cdev->led_pin);
-
-    iowrite32(val, led_cdev->va_gdir);
-
-    val = ioread32(led_cdev->va_dr);
-    val |= (0x01 << led_cdev->led_pin);
-    iowrite32(val, led_cdev->va_dr);
+    // 设置模式寄存器：输出模式
+    val = readl(led_cdev->va_moder);
+    val &= ~((unsigned int)0X3 << (2 * led_cdev->led_pin));
+    val |= ((unsigned int)0X1 << (2 * led_cdev->led_pin));
+    writel(val,led_cdev->va_moder);
+    // 设置输出类型寄存器：推挽模式
+    val = readl(led_cdev->va_otyper);
+    val &= ~((unsigned int)0X1 << led_cdev->led_pin);
+    writel(val, led_cdev->va_otyper);
+    // 设置输出速度寄存器：高速
+    val = readl(led_cdev->va_ospeedr);
+    val &= ~((unsigned int)0X3 << (2 * led_cdev->led_pin));
+    val |= ((unsigned int)0x2 << (2 * led_cdev->led_pin));
+    writel(val, led_cdev->va_ospeedr);
+    // 设置上下拉寄存器：上拉
+    val = readl(led_cdev->va_pupdr);
+    val &= ~((unsigned int)0X3 << (2*led_cdev->led_pin));
+    val |= ((unsigned int)0x1 << (2*led_cdev->led_pin));
+    writel(val,led_cdev->va_pupdr);
+    // 设置置位寄存器：默认输出低电平
+    val = readl(led_cdev->va_bsrr);
+    val |= ((unsigned int)0x1 << (led_cdev->led_pin + 16));
+    writel(val, led_cdev->va_bsrr);
 
     return 0;
 }
