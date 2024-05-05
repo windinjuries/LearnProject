@@ -53,7 +53,7 @@ int gpio_init()
         printf("gpio_base mmap_fail!\n"); //是否映射成功
 
     pc_cfg0_reg = (volatile unsigned int * ) (gpio_base + PC_CFG0);
-    pc_cfg1_reg = (volatile unsigned int * ) (gpio_base + PC_CFG1);
+    // pc_cfg1_reg = (volatile unsigned int * ) (gpio_base + PC_CFG1);
     //pc_cfg2_reg = (volatile unsigned int * ) (gpio_base + PC_CFG2);
     //pc_cfg3_reg = (volatile unsigned int * ) (gpio_base + PC_CFG3);
 

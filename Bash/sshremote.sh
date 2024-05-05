@@ -1,5 +1,5 @@
 #!/bin/bash
-ip=192.168.31.119
+ip=192.168.2.12
 user=orangepi
 if [[ $# -eq 1 ]]; then
     ip=$1

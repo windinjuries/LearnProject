@@ -3,6 +3,7 @@
 # ARCH=arm64
 # CROSS_COMPILE=/home/fengzhishang/Desktop/orangepi-build/toolchains/gcc-arm-11.2-2022.02-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
 # export  ARCH  CROSS_COMPILE
+CONFIG_MODULE_SIG=n
 obj-m := led_dev.o
 KERNEL_DIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
