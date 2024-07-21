@@ -1,8 +1,8 @@
 #!/bin/bash
 # route machine
-# ip=192.168.2.12
+ip=192.168.2.12
 # phone
-ip=192.168.1.5
+# ip=192.168.1.5
 user=orangepi
 if [[ $# -eq 1 ]]; then
 	ip=$1
