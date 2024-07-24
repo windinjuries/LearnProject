@@ -197,7 +197,27 @@ git stash pop
 ## 删除进度
 git stash drop
 ```
+## tag
 
+```bash
+# 轻量标签
+git tag [tagname] [commit]
+# 附注标签
+git tag -a [tagname] [commit]
+# 显示所有标签
+git tag 
+# 显示某一标签
+git show [tagname]
+# 推送本地标签
+git push origin [tagname]
+# 推送所有标签
+git push origin --tags
+# 删除本地标签
+git tag -d [tagname]
+# 删除远程标签
+git push origin -d [tagname]
+
+```
 ### diff
 
 ```bash
