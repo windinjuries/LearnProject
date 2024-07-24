@@ -166,23 +166,23 @@ git checkout -- .
 
 ### reset
 ```bash
-# reset分为以下三步：
-# 1. 将HEAD和master分支指针移动到对应的commit上
-# 2. 将commit中的文件版本覆盖到stage
-# 3. 将stage覆盖到workspace
-# 注意：
-# 1. reset是用于移动master分支指针，checkout是移动HEAD
-# 2. hard方式使用很危险
+# reset分为以下三种类型：
+# 1. soft: 将HEAD和master分支的指针移动到指定commit
+# 2. mixed: 在soft基础上将commit中的文件版本覆盖到stage(可以用于取消git add)
+# 3. 将stage中的文件覆盖到workspace，该操作执行后无法恢复workspace修改的文件
+
 git reset –-soft [commit] 
 git reset –-mixed [commit]
 git reset –-hard [commit]
+
+ATTENTION：reset是移动master分支指针，checkout是移动HEAD
+
 ```
 
 ### revert
 ```bash
-#用于没添加到暂存区的工作区文件
-#回滚某个版本作为新版本
-git revert 版本号  
+#回滚某个版本作为一个新版本
+git revert [commit]
 ```
 
 ### stash
@@ -240,5 +240,5 @@ git diff commit1 commit2
 注意：命令的详细介绍在Linux环境下可如 `man git` 或者 `git --help` 查看
 ## Reference
 [Pro Git](https://git-scm.com/book/zh/)  
-[GotGit](https://www.worldhello.net/gotgit/)
-[git command introduce](https://blog.csdn.net/weixin_36168780/article/details/112100325)
+[GotGit](https://www.worldhello.net/gotgit/)  
+[git command introduce](https://blog.csdn.net/weixin_36168780/article/details/112100325)  
