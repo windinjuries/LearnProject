@@ -155,10 +155,9 @@ git merge [branchname]
 ### checkout
 
 ```bash
-# 将添加到暂存区的文件版本恢复到工作区文件上
+# 将暂存区的文件版本恢复到工作区文件上
 # 注意：未被添加到暂存区的文件无法恢复
 
-#丢弃某个文件file
 git checkout -- [file]  
 #丢弃所有文件
 git checkout -- .  
