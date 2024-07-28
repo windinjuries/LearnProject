@@ -80,7 +80,7 @@ git status
 
 ```bash
 #查看提交历史
-git log --oneline 
+git log --oneline --graph
 ```
 ### remote
 
@@ -168,14 +168,12 @@ git checkout -- .
 # reset分为以下三种类型：
 # 1. soft: 将HEAD和master分支的指针移动到指定commit
 # 2. mixed: 在soft基础上将commit中的文件版本覆盖到stage(可以用于取消git add)
-# 3. 将stage中的文件覆盖到workspace，该操作执行后无法恢复workspace修改的文件
+# 3. hard: 将stage中的文件覆盖到workspace，该操作执行后无法恢复workspace修改的文件
+# ATTENTION：reset是移动master分支指针，checkout是移动HEAD
 
 git reset –-soft [commit] 
 git reset –-mixed [commit]
 git reset –-hard [commit]
-
-ATTENTION：reset是移动master分支指针，checkout是移动HEAD
-
 ```
 
 ### revert
@@ -234,6 +232,12 @@ git diff --cached commit
 
 # 查看commit1和commit2的区别
 git diff commit1 commit2
+```
+
+### cherry-pick
+``` bash
+# 挑选指定提交到应用分支
+git cherry-pick [commit1] [commit2]
 ```
 
 注意：命令的详细介绍在Linux环境下可如 `man git` 或者 `git --help` 查看
