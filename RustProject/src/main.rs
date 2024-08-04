@@ -1,15 +1,34 @@
-use std::thread;
-use std::time::Duration;
+use std::os::fd::RawFd;
 
+use linux::syscall::*;
 fn main() {
-    let s1:String = String::from("hello");
-    let array:[i32;5] = [1,2,3,4,5];
-    println!("{}",array[4]);
-    println!("{}",s1);
-    let num = 98_22;
-    println!("{0}",&num);
-    println!("{0}",add(1,2));
-    //123
-    /*123123 */
+    let result: Result<i32, nix::Error>;
+    let fd:RawFd;
+    let num:i32 = 1;
+    result = openat("/sys/class/leds/green_led/brightness", OFlag::O_RDWR, Mode::S_IRWXO);
+    match result {
+        Ok(n)  => {
+            fd = n;
+            println!("fd is {}", fd);
+        },
+        Err(e) => {
+            println!("Error: {}", e); 
+            return; 
+        }
+    }
+    result = fc(fd, 1, 1);
+    match result {
+        Ok(n)  => {
+            fd = n;
+            println!("fd is {}", fd);
+        },
+        Err(e) => {
+            println!("Error: {}", e); 
+            return; 
+        }
+    }
+    
 }
+
+
 
