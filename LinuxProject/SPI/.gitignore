@@ -1,0 +1,3 @@
+#scons
+*.dblite
+/build

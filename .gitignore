@@ -5,3 +5,7 @@
 test
 */build/*
 */.xmake/*
+cmake_install.cmake
+
+#scons
+*.dblite

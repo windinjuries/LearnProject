@@ -3,7 +3,10 @@
         "typeinfo": "cpp",
         "init.h": "c",
         "stringify.h": "c",
-        "module.h": "c"
+        "module.h": "c",
+        "log.h": "c",
+        "string.h": "c",
+        "time.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "python.analysis.typeCheckingMode": "basic"
