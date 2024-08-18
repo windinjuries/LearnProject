@@ -1,3 +1,4 @@
 #scons
 *.dblite
 /build
+*.o
