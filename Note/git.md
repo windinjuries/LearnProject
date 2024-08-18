@@ -245,3 +245,4 @@ git cherry-pick [commit1] [commit2]
 [Pro Git](https://git-scm.com/book/zh/)  
 [GotGit](https://www.worldhello.net/gotgit/)  
 [git command introduce](https://blog.csdn.net/weixin_36168780/article/details/112100325)  
+[git commit messgae](https://www.cnblogs.com/ltaodream/p/16113677.html)
