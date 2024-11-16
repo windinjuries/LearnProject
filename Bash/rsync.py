@@ -3,11 +3,15 @@ import os
 import shlex
 import sys
 import time
+import subprocess
 
 import sh
+from sh import rsync
 
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+
+ignore_list = ['backend/*']
 
 
 class BufferedEventHandler(FileSystemEventHandler):
@@ -91,24 +95,26 @@ class BufferedEventHandler(FileSystemEventHandler):
 
 def run_command(command: str):
     command_split = shlex.split(command)
-    logger.debug(command)
+    logger.debug(command_split)
     proc_fn = getattr(sh, command_split[0])
     return proc_fn(*command_split[1:], _fg=True)
 
 if __name__ == "__main__":
+    
+
 
     username = sys.argv[1]
     host = sys.argv[2]
     src_dir = sys.argv[3]
     dest_dir = sys.argv[4]
-    event_handler = BufferedEventHandler(ignore=['.git'])
+    exclude_file = sys.argv[5]
+    event_handler = BufferedEventHandler(ignore = ignore_list)
 
     rsync_delete_arg = '--delete'
 
     observer = Observer()
     observer.schedule(event_handler, src_dir, recursive=True)
     observer.start()
-
     count = 0
 
     try:
@@ -119,7 +125,7 @@ if __name__ == "__main__":
                 _count = len(event_handler.events)
 
                 try:
-                    run_command(f"time rsync -av --exclude {rsync_delete_arg} {src_dir} {username}@{host}:{dest_dir}")
+                    run_command(f"rsync -av --exclude-from={exclude_file} {rsync_delete_arg} {src_dir} {username}@{host}:{dest_dir}")
                 except Exception as exc:
                     logger.warning(f'command failed with error {exc}')
             count = _count
